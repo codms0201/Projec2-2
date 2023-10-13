@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>My Voca</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./style.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script>
+    function addWord(event){
+        event.preventDefault();
+
+        var level = document.getElementById('level').value;
+        var word = document.getElementById('word').value;
+        var meaning = document.getElementById('meaning').value;
+
+        if (word.trim() === '' || meaning.trim() === ''){
+            alert('Write all the things.');
+            return;
+        }
+
+        alert('Word added successfully.');
+    }
+  </script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="index.html">My Voca</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+            <li><a href="index.html">Home</a></li>
+          <li><a href="add.html">Add</a></li>
+          <li><a href="edit.html">Edit</a></li>
+          <li><a href="view.html">Delete</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+      </ul>
+    </div>
+  </div>
+</nav>
+<fieldset>
+    <legend>Add Word</legend>
+    <form name="form" action="index.html" id="addWord" method="post" >
+        <div class="form-group">
+            <label for="ability">Choose Level </label>
+            <select id="level" name="level">
+                <option value="Level 1">Level 1</option>
+                <option value="Level 2">Level 2</option>
+                <option value="Level 3">Level 3</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="word">Word </label>
+            <input type="text" class="form-control" id="word" required>
+        </div>
+        <div class="form-group">
+            <label for="meaning">Meaning </label>
+            <input type="text" class="form-control" id="meaning" required>
+        </div>
+        <div class="col-sm-2 sidenav">
+            <button type="submit" onclick="addWord(event)">Add</button>
+        </div>
+    </form>
+</fieldset>
+
+<div class="container-fluid text-center">    
+    <div class="row content">
+        <div class="col-sm-8 text-left">
+        </div>
+    </div>
+</div>
+
+<footer class="container-fluid text-center">
+    <p>"The best way to memorize is seeing frequently."</p>
+</footer>
+
+</body>
+</html>

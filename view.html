@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>My Voca</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./style.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script>
+    $(document).on("click", ".edit", function() {
+        if (confirm("Edit?") == true) {    
+            var editLink = "file:///Users/gwonchaeeun/dd/edit.html";
+            window.location.href = editLink;
+        } else {
+            return false;
+        }
+    });
+
+    $(document).on("click", ".delete", function() {
+        if (confirm("Delete?") == true) {    
+            $(this).closest("tr").remove();
+            $(".add-new").removeAttr("disabled");
+        } else {
+            return false;
+        }
+    });
+  </script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+  </nav>
+  <div class="container">
+    <h2>선택한 영단어</h2>   
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Word</th>
+            <th>Meaning</th>
+            <th>Level</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr onclick="location.href='view.html';" style="cursor:pointer;">
+            <td>1</td>
+            <td>independence</td>
+            <td>독립</td>
+            <td>2</td>
+            <td>
+              <button class="edit" title="Edit" data-toggle="tooltip">Edit</button>
+              <button class="delete" title="Delete" data-toggle="tooltip">Delete</button>
+            </td>
+          </tr>
+          <tr onclick="location.href='view.html';" style="cursor:pointer;">
+            <td>2</td>
+            <td>value</td>
+            <td>가치, 명도</td>
+            <td>1</td>
+            <td>
+              <button class="edit" title="Edit" data-toggle="tooltip">Edit</button>
+              <button class="delete" title="Delete" data-toggle="tooltip">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer class="container-fluid text-center">
+    <p>"The best way to memorize is seeing frequently."</p>
+  </footer>
+</body>
+</html>

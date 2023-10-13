@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>My Voca</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./style.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('home-link').classList.remove('active');
+        document.getElementById('add-link').classList.add('active');
+        document.getElementById('view-link').classList.remove('active');
+        document.getElementById('edit-link').classList.remove('active');
+        bringForm();
+    });
+
+    function bringForm() {
+        var urlParams = new URLSearchParams(window.location.search);
+
+        if (urlParams.has('level') && urlParams.has('word') && urlParams.has('meaning')) {
+            var level = urlParams.get('level');
+            var word = urlParams.get('word');
+            var meaning = urlParams.get('meaning');
+
+            document.getElementById('level').value = decodeURIComponent(level);
+            document.getElementById('word').value = decodeURIComponent(word);
+            document.getElementById('meaning').value = decodeURIComponent(meaning);
+        }
+    }
+
+    function editWord() {
+        var level = encodeURIComponent(document.getElementById('level').value);
+        var word = encodeURIComponent(document.getElementById('word').value);
+        var meaning = encodeURIComponent(document.getElementById('meaning').value);
+
+        if (word.trim() === '' || meaning.trim() === '') {
+            alert('Write again.');
+            return;
+        }
+
+        alert('Word edited successfully!');
+        var redirectUrl = 'view.html?level=' + level + '&word=' + word + '&meaning=' + meaning;
+        window.location.href = redirectUrl;
+    }
+  </script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+  </nav>
+  <fieldset>
+    <legend>Edit Word</legend>
+    <form name="form" action="index.html" id="editWordForm" method="post">
+        <div class="col-sm-2 sidenav">
+            <button type="button" onclick="editWord()">Edit</button>
+        </div>
+    </form>
+  </fieldset>
+
+</body>
+</html>
